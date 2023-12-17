@@ -1,39 +1,30 @@
-import { genAI} from "../config/gemini-api-config.js";
-import fs from  'fs'
+import { genAI } from "../config/gemini-api-config.js";
 
-
-
-function fileToGenerativePart(path, mimeType) {
-    return {
-      inlineData: {
-        data: Buffer.from(fs.readFileSync(path)).toString("base64"),
-        mimeType
-      },
-    };
-  }
-
-
-const GeminiProVision = async (textPrompt) => {
-
-    const model = genAI.getGenerativeModel({model: "gemini-pro-vision"})
-
-    const prompt = textPrompt || 'what is in this image?';
-
-    const imageParts = [
-        fileToGenerativePart('./assets/image.jpg', 'image/jpeg')
-    ]
-
-    const result = await model.generateContent([prompt, ...imageParts])
-
-    const response = await result.response;
-
-    const text = response.text();
-
-    console.log(text)
-
-    return text;
-    
+async function fileToGenerativePart(buffer, mimeType) {
+  return {
+    inlineData: {
+      data: buffer.toString("base64"),
+      mimeType,
+    },
+  };
 }
 
+const GeminiProVision = async (textPrompt, fileBuffer) => {
+  const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+
+  const prompt =
+    textPrompt != ""
+      ? textPrompt
+      : "Craft an Insta-worthy caption that feels genuine and not too scripted. Imagine you're chatting with a friend about a cool moment. Go ahead, what would you say? 🌈📸";
+  const imageParts = [await fileToGenerativePart(fileBuffer, "image/jpeg")];
+
+  const result = await model.generateContent([prompt, ...imageParts]);
+
+  const response = await result.response;
+
+  const text = response.text();
+
+  return text;
+};
 
 export { GeminiProVision };
