@@ -2,7 +2,7 @@ import React from 'react'
 
 function FacialRecongnitionSystem() {
   return (
-    <div>FacialRecongnitionSystem</div>
+    <div className='text-center text-6xl flex justify-center items-center h-[80vh]'>Coming Soon......</div>
   )
 }
 

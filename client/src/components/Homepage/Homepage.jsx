@@ -6,7 +6,7 @@ function Homepage() {
     <div className="homepage flex flex-col gap-y-10 items-center justify-center bg-slate-200 h-[85vh] max-sm:flex-col max-sm:gap-y-2">
       <div className="left-container  w-full flex items-center">
         <div class="container mx-auto  p-6 bg-white rounded shadow-md  w-[80%] ">
-          <h1 class="text-3xl max-sm:text-xl font-bold text-gray-800 mb-4">
+          <h1 class="text-4xl max-sm:text-xl font-bold text-gray-800 mb-4">
             Instagram AI Caption Generator
           </h1>
           <p class="text-gray-600 text-lg max-sm:text-base">
@@ -24,7 +24,7 @@ function Homepage() {
       </div>
       <div className="right-container w-full flex items-center">
         <div class="container mx-auto  p-6  bg-white rounded shadow-md  w-[80%]">
-          <h1 class="text-3xl max-sm:text-xl font-bold text-gray-800 mb-4">
+          <h1 class="text-4xl max-sm:text-xl font-bold text-gray-800 mb-4">
             Face Matching with Gemini Vision Pro
           </h1>
           <p class="text-gray-600 text-lg max-sm:text-base">

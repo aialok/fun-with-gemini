@@ -70,7 +70,7 @@ function InstagramCaptionGenerator() {
   return (
     <div className="text-center mt-8 max-w-lg mx-auto">
       <Toaster />
-      <h2 className="text-3xl font-bold mb-4">Instagram Caption Generator</h2>
+      <h2 className="text-4xl font-bold mb-4 max-sm:text-2xl">Instagram AI Caption Generator</h2>
       <input
         type="file"
         accept="image/*"
@@ -78,14 +78,14 @@ function InstagramCaptionGenerator() {
         className="mb-4"
       />
       {filePreview && (
-        <img src={filePreview} alt="Preview" className="max-w-full max-h-64 mb-4 rounded" />
+        <img src={filePreview} alt="Preview" className="max-w-full max-h-64 mb-4 rounded mx-auto" />
       )}
       <input
         type="text"
         placeholder="Enter a prompt (optional)"
         value={textPrompt}
         onChange={(e) => setTextPrompt(e.target.value)}
-        className="border border-gray-300 p-2 mb-4 w-full rounded"
+        className="border border-gray-300 p-2 mb-4 w-[90%] rounded"
       />
       <br />
       <button onClick={handleGenerateCaption} className="bg-blue-500 text-white px-4 py-2 rounded">

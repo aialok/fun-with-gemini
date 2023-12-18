@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="bg-gray-800 p-4 h-[7vh]">
       <div className="container mx-auto flex justify-between items-center max-sm:flex-col">
         <div className="text-white text-xl font-bold">aialok.me</div>
-        <div className="lg:hidden ">
+        <div className="lg:hidden  max-sm:hidden">
           <button
             onClick={toggleNavbar}
             className="text-white focus:outline-none"
@@ -38,7 +38,7 @@ const Navbar = () => {
         <div
           className={`${
             isOpen ? 'block' : 'hidden'
-          } lg:flex lg:items-center lg:w-auto mt-4 lg:mt-0 flex max-sm:flex-col`}
+          } lg:flex lg:items-center lg:w-auto mt-4 lg:mt-0 flex max-sm:flex-col max-sm:hidden`}
         >
           <Link to="" className="text-white mr-6">
             Home
