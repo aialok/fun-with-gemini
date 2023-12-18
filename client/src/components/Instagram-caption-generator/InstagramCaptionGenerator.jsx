@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import toast, {Toaster} from 'react-hot-toast';
+const BACKEND_API_ENDPOINT = import.meta.env.VITE_BACKEND_API_ENDPOINT;
 
 function InstagramCaptionGenerator() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -12,10 +13,10 @@ function InstagramCaptionGenerator() {
     const file = event.target.files[0];
 
     if (file) {
-      // Set the selected file
+      
       setSelectedFile(file);
 
-      // Read the file content and set it as a preview
+      
       const reader = new FileReader();
       reader.onloadend = () => {
         setFilePreview(reader.result);
@@ -35,13 +36,9 @@ function InstagramCaptionGenerator() {
       formData.append('image', selectedFile);
       formData.append('text/plain', textPrompt);
 
-      // Replace 'YOUR_API_ENDPOINT' with your actual backend API endpoint
-      // const response = await fetch('YOUR_API_ENDPOINT', {
-      //   method: 'POST',
-      //   body: formData,
-      // });
 
-      const result = axios.post('http://localhost:3008/api/v1/gemini-pro-vision', formData)
+
+      const result = axios.post(`${BACKEND_API_ENDPOINT}`, formData)
 
       toast.promise(result, {
         loading: 'Generating caption...',
@@ -58,7 +55,6 @@ function InstagramCaptionGenerator() {
       if (response.data.success) {
         
         setGeneratedCaption(response.data.data || 'No caption available.');
-        // alert('Caption generated successfully!');
       } else {
         alert('Failed to generate caption. Please try again.');
       }

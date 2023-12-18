@@ -18,6 +18,13 @@ app.use(cors())
 
 app.use("/api", apiRoutes);
 
+app.get("/", (req, res) => {
+    res.json({
+        success: true,
+        message: "Server is Live",
+    });
+})
+
 const ServerAndDatabase = async () => {
     app.listen(PORT, () => {
         console.log(`Server is running on PORT ${PORT}`);
